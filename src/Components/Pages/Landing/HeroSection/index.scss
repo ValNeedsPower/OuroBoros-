@@ -1,0 +1,160 @@
+@import "./src/scss/mixins";
+
+.landing-hero {
+  position: relative;
+  width: 100%;
+  height: 785px;
+  margin-top: -100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 10;
+
+
+  &__wrapper {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: 35% 60%;
+    align-items: center;
+    justify-content: end;
+
+    background-image: url("../assets/hero/bg_grads.png");
+    background-repeat: no-repeat;
+  }
+
+  &__left {
+    grid-column: 1/2;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    h1 {
+      @include h1-75px;
+      text-transform: uppercase;
+      padding-bottom: 15px;
+    }
+
+    p {
+      @include p-24px;
+    }
+
+    h2 {
+      @include h2-36px;
+      text-transform: uppercase;
+      padding-bottom: 40px;
+      padding-top: 14px;
+    }
+  }
+
+  &__right {
+    grid-column: 2/3;
+    width: 100%;
+    height: 90%;
+
+    background-image: url("../assets/hero/first-bg.png");
+    background-repeat: no-repeat;
+  }
+
+  &__support {
+    position: absolute;
+
+    width: auto;
+    height: auto;
+
+    top: 93%;
+    right: 0;
+
+    p {
+      @include p-13px;
+      text-decoration-line: underline;
+      color: #BE4383;
+    }
+  }
+}
+
+.landing-hero-mobile {
+  position: relative;
+
+  width: 100%;
+  height: 600px;
+
+  display: flex;
+  justify-content: center;
+
+  padding-top: 2%;
+
+  background-image: url("../assets/hero/bg_grads_mobile.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  &__wrapper {
+    width: 90%;
+    height: 85%;
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    text-align: center;
+
+    background-image: url("../assets/hero/first-bg.png");
+    background-position: 50% 35%;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    h1 {
+      text-transform: uppercase;
+      @include h1-75px;
+      text-align: right;
+    }
+
+    p {
+      @include p-24px;
+    }
+
+    h2 {
+      @include h2-36px;
+      text-transform: uppercase;
+      padding-bottom: 20px;
+      padding-top: 13px;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__support {
+    position: absolute;
+
+    width: auto;
+    height: auto;
+
+    top: 93%;
+    right: 10%;
+
+    p {
+      @include p-13px;
+      text-decoration-line: underline;
+      color: #BE4383;
+      text-transform: uppercase;
+    }
+  }
+}
+.btn-center {
+  display:flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}

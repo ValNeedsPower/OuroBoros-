@@ -1,0 +1,104 @@
+@import "./src/scss/mixins";
+
+.landing-header {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 100;
+
+  &__btn{
+    position: absolute;
+    top: 12px;
+    right: 1%;
+    transform: translate(0, -50%);
+  }
+
+  &__logo {
+    width: 20%;
+
+    svg {
+      width: 100%;
+    }
+  }
+
+  &__menu {
+    width: 20px;
+    height: 20px;
+
+    svg {
+      width: 100%;
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+
+    width: 90%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    width: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+
+    p {
+      @include p-13px;
+      cursor: pointer;
+      text-transform: uppercase;
+
+      &:hover {
+        transition: 500ms ease-out;
+        opacity: .6;
+        p {
+          opacity: .6;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 360px) and (max-width: 1300px) {
+  .landing-header {
+    height: 5vh;
+    align-items: flex-start;
+    padding-top: 5%;
+    &--open{
+      
+      height: 70px;
+      cursor: pointer;
+      text-transform: uppercase;
+
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+
+      padding-left: 10%;
+      padding-bottom: 10%;
+      
+
+
+      p{
+        color: #FFFFFF;
+      }
+    }
+
+    &__logo {
+      width: 30%;
+
+      svg {
+        width: 100%;
+      }
+    }
+  }
+}

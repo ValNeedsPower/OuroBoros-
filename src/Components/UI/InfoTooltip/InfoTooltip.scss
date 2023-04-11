@@ -1,0 +1,55 @@
+@import "./src/scss/mixins";
+
+.ui-tooltip {
+  position: relative;
+
+  width: auto;
+  min-width: 14px;
+  height: auto;
+  min-height: 14px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    width: 14px;
+
+    fill: transparent;
+    transform: translate(0, -50%);
+
+    cursor: pointer;
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+
+    width: 145px;
+    height: auto;
+
+    padding: 12px 12px 7px 12px;
+    text-align: center;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #341252;
+    border: 1px solid #D545A3;
+    border-radius: 18px;
+
+    p{
+      max-width: 120px;
+      padding: 0 !important;
+      @include p-13px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+  }
+}

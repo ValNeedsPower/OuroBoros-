@@ -1,0 +1,397 @@
+@import "./src/scss/mixins";
+.landing {
+  position: relative;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background: #0B0815;
+
+  &--loading {
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  &-body {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    z-index: 2;
+  }
+
+  &__support{
+    width: 90%;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    p {
+      @include p-13px;
+      text-decoration-line: underline;
+      color: #BE4383;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.ui-button {
+  width: 283px;
+  height: 57px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  p {
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 23px !important;
+    line-height: 28px !important;
+
+    color: #FFFFFF;
+    text-transform: uppercase;
+  }
+
+  background: linear-gradient(180deg, #8B35F4 0%, #63199B 100%);
+  border-radius: 42px;
+
+  &:hover {
+    transition-duration: 500ms;
+    background: linear-gradient(180deg, #35204E 0%, #350F51 100%);
+    border-radius: 42px;
+    opacity: 0.6;
+  }
+}
+
+.buy-button-v2 {
+  width: 283px;
+  height: 57px;
+  margin-bottom: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #CB3FA7;
+  border-radius: 42px;
+
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &--inactive {
+    background-color: gray;
+    color: rgb(223, 223, 223);
+    cursor: not-allowed;
+
+    &:hover {
+      background: gray !important;
+      opacity: 1 !important;
+    }
+    
+     &--big {
+    width: 215px;
+    height: 43px;
+
+    text-transform: none !important;
+
+    p {
+      font-style: normal;
+      font-weight: 400 !important;
+      font-size: 14px !important;
+      line-height: 17px !important;
+
+      color: #FFFFFF;
+    }
+  }
+    
+    // Add any additional styles here
+  }
+  p {
+    //font-family: 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 23px !important;
+    line-height: 28px !important;
+
+    color: #FFFFFF !important;
+
+    padding: 0 !important;
+  }
+
+  &--big {
+    width: 215px;
+    height: 43px;
+
+    text-transform: none !important;
+
+    p {
+      font-style: normal;
+      font-weight: 400 !important;
+      font-size: 14px !important;
+      line-height: 17px !important;
+
+      color: #FFFFFF;
+    }
+  }
+
+  &--small {
+    width: 158px;
+    height: 33px;
+
+    p {
+      font-style: normal;
+      font-weight: 400 !important;
+      font-size: 14px !important;
+      line-height: 17px !important;
+
+      color: #FFFFFF;
+    }
+  }
+
+  &--cap {
+    text-transform: capitalize;
+  }
+
+  &--disabled {
+    background: rgba(255, 255, 255, 0.6);
+    
+
+    p {
+      color: rgba(0, 0, 0, 0.6) !important;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.6) !important;
+      opacity: 1 !important;
+    }
+  }
+
+  &:hover {
+    background: #CB3FA7;
+    opacity: 0.6;
+
+    transition-duration: 500ms;
+  }
+}
+
+.container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center; // Centers the buttons horizontally
+}
+
+.buy-button-v3 {
+  width: 215px;
+  height: 43px;
+  margin-bottom: 20px;
+  font-size: 14px;
+
+
+  font-style: normal;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 17px !important;
+
+  color: #FFFFFF;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #CB3FA7;
+  border-radius: 42px;
+
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &--inactive {
+    background-color: gray;
+    color: rgb(223, 223, 223);
+    cursor: not-allowed;
+
+    &:hover {
+      background: gray !important;
+      opacity: 1 !important;
+    }
+    
+     
+    
+    // Add any additional styles here
+  }
+  
+  &--big {
+    width: 215px;
+    height: 43px;
+
+    text-transform: none !important;
+
+    p {
+      font-style: normal;
+      font-weight: 400 !important;
+      font-size: 14px !important;
+      line-height: 17px !important;
+
+      color: #FFFFFF;
+    }
+  }
+
+  &--small {
+    width: 158px;
+    height: 33px;
+
+    p {
+      font-style: normal;
+      font-weight: 400 !important;
+      font-size: 14px !important;
+      line-height: 17px !important;
+
+      color: #FFFFFF;
+    }
+  }
+
+  &--cap {
+    text-transform: capitalize;
+  }
+
+  &--disabled {
+    background: rgba(255, 255, 255, 0.6);
+    
+
+    p {
+      color: rgba(0, 0, 0, 0.6) !important;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.6) !important;
+      opacity: 1 !important;
+    }
+  }
+
+  &:hover {
+    background: #CB3FA7;
+    opacity: 0.6;
+
+    transition-duration: 500ms;
+  }
+}
+
+
+
+
+.ui-button-v2 {
+  width: 283px;
+  height: 57px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #CB3FA7;
+  border-radius: 42px;
+
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &--inactive {
+    background-color: gray;
+    color: white;
+    cursor: not-allowed;
+    
+    // Add any additional styles here
+  }
+
+  p {
+    //font-family: 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 500 !important;
+    font-size: 23px !important;
+    line-height: 28px !important;
+
+    color: #FFFFFF !important;
+
+    padding: 0 !important;
+  }
+
+  &--big {
+    width: 215px;
+    height: 43px;
+
+    text-transform: none !important;
+
+    p {
+      font-style: normal;
+      font-weight: 400 !important;
+      font-size: 14px !important;
+      line-height: 17px !important;
+
+      color: #FFFFFF;
+    }
+  }
+
+  &--small {
+    width: 158px;
+    height: 33px;
+
+    p {
+      font-style: normal;
+      font-weight: 400 !important;
+      font-size: 14px !important;
+      line-height: 17px !important;
+
+      color: #FFFFFF;
+    }
+  }
+
+  &--cap {
+    text-transform: capitalize;
+  }
+
+  &--disabled {
+    background: rgba(255, 255, 255, 0.6);
+
+    p {
+      color: rgba(0, 0, 0, 0.6) !important;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.6) !important;
+      opacity: 1 !important;
+    }
+  }
+
+  &:hover {
+    background: #CB3FA7;
+    opacity: 0.6;
+
+    transition-duration: 500ms;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 428px) {
+  .ui-button {
+    width: 160px;
+    height: 33px;
+
+    p {
+      font-size: 13px;
+      line-height: 16px;
+    }
+
+    &--thin {
+      p {
+        font-weight: 500;
+        font-size: 13px !important;
+        line-height: 16px !important;
+      }
+    }
+  }
+}
