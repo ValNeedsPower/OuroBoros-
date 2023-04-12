@@ -56,7 +56,7 @@ const Landing: React.FC<ILanding> = () => {
             const _msBalance = await wallet.getMSTokenBalance();
             setTokenBalance((ethers.utils.formatEther(balanceTokens)))            
             setMCBalance(ethers.utils.formatEther(_msBalance));
-            const stakes = await wallet.buyTokens()
+
             setStakes(stakes)
             const team = await wallet.getTeamInfo()
             setTeamInfo(team)
@@ -155,7 +155,8 @@ const Landing: React.FC<ILanding> = () => {
                <div style={{display: 'none'}}>  <StakingPools refProp={poolRef} wallet={wallet} claimReward={claimReward} stakes={stakes} stake={stake}
                               balance={mcBalance} poolsTvl={poolsInfo} {...modal.props}/> </div>
             </div>
-            <div className={'landing__support'} />
+            <div style={{paddingTop: '150px'}} className={'landing__support'}>
+            </div>
         </div>
     )
 }

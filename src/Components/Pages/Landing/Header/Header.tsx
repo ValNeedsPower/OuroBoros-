@@ -17,6 +17,13 @@ const Header: React.FC<IHeader> = ({addr, connectWallet, disconnectWallet, scrol
     const isMobile = window.innerWidth < 1366
     const [showMenu, setShowMenu] = useState(false)
 
+    const styles = {
+        img: {
+          width: "120px",
+          // other styles for before screen size 1300
+        },
+      };
+
     const handleDisconnect = () => {
         disconnectWallet()
         setShowMenu(false)
@@ -30,7 +37,7 @@ const Header: React.FC<IHeader> = ({addr, connectWallet, disconnectWallet, scrol
             })}>
                 <div className={'landing-header__wrapper'}>
                     <div className={'landing-header__logo'}>
-                      <img src="./logo_main.svg" alt="logotype" />
+                      <img style={styles.img} className="my-svg-img" src="./logo_main.svg" alt="logotype" />
                     </div>
                     <div className={'landing-header__btn'}>
                         <ConnectWalletBtn addr={addr} connectWallet={connectWallet}
