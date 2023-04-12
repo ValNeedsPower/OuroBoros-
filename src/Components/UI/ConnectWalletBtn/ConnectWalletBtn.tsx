@@ -61,8 +61,6 @@ const ConnectWalletBtn: React.FC<IConnectWalletBtn> = ({addr, connectWallet, dis
 
             {showDropdown &&
                 <div className={'ui-wallet-connect__dropdown'}>
-                    <button onClick={() => showModal({type: modalTypes.PROFILE_POPUP, props: {}}) && setShowDropdown(false)}><p>Профиль</p>
-                    </button>
                     <button onClick={handleDisconnect}><p>Отключить</p></button>
                 </div>
             }
