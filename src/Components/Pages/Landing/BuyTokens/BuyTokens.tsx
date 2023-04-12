@@ -2,6 +2,7 @@ import './index.scss'
 import React, {useState} from "react";
 import classNames from "classnames";
 import InfoTooltip from "../../../UI/InfoTooltip";
+import { ethers } from 'ethers';
 
 
 // Defining the props for the component
@@ -25,13 +26,29 @@ const BuyTokens: React.FC<IBuyTokens> = ({buyMc, wallet, balance}) => {
     }
 
     // Defining a function to buy tokens with the buyMc function passed as a prop
-    const buy = () => {
-        buyMc(amount)
+    // const buy = () => {
+    //     buyMc(amount)
+    // }
+
+    const buy = async () => {
+        console.log("buy");
+        try {
+            const provider = new ethers.providers.Web3Provider(wallet._provider);
+            const signer = provider.getSigner();
+            const contract = new ethers.Contract("0xFF18765da35E1E2b0e99ddA0b7cAaCb8ed26D07D", [{"inputs":[{"internalType":"address","name":"_ouroborosToken","type":"address"},{"internalType":"address","name":"_usdtToken","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[],"name":"SalePaused","type":"event"},{"anonymous":false,"inputs":[],"name":"SaleUnpaused","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"buyer","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"TokensPurchased","type":"event"},{"inputs":[{"internalType":"uint256","name":"usdtAmount","type":"uint256"}],"name":"buyTokens","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"isSaleActive","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"ouroborosToken","outputs":[{"internalType":"contract ERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"pause","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"saleActive","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalUsdtRaised","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"unpause","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"usdtToken","outputs":[{"internalType":"contract ERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"withdrawTOKEN","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdrawUSDT","outputs":[],"stateMutability":"nonpayable","type":"function"}], signer);
+            const tx = await  contract.buyTokens(ethers.utils.parseEther(amount))
+            const response = await tx.wait();
+            console.log("response: ", response);
+        } catch (error) {
+            console.error(error);
+        }
+
     }
     
     // Defining a mock function to approve the purchase
     const approveMock = async () => {
         await wallet.approveToken(amount);
+        setAllowance(amount);
         setIsApproved(true);
     }
 
