@@ -44,7 +44,7 @@ const ConnectWalletBtn: React.FC<IConnectWalletBtn> = ({addr, connectWallet, dis
                  onClick={() => !addr && handleConnect() || showDropdown && setShowDropdown(false)}
             >
                 <div className={'ui-wallet-connect__body'} onClick={() => setShowDropdown(true)}>
-                    {addr ? <p>{formatAddr()}</p> : <p>Подключить кошелек</p>}
+                    {addr ? <p>{formatAddr()}</p> : <p>Connect Wallet</p>}
                     {addr ?
                         <div className={classNames({
                             'dropdown-button': true,
@@ -61,7 +61,7 @@ const ConnectWalletBtn: React.FC<IConnectWalletBtn> = ({addr, connectWallet, dis
 
             {showDropdown &&
                 <div className={'ui-wallet-connect__dropdown'}>
-                    <button onClick={handleDisconnect}><p>Отключить</p></button>
+                    <button onClick={handleDisconnect}><p>Disconnect</p></button>
                 </div>
             }
         </div>

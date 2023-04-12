@@ -8,6 +8,20 @@ interface IBuyTokens {}
 const BuyTokens: React.FC<IBuyTokens> = () => {
   const [amount, setAmount] = useState(""); // Using state to manage the amount of tokens to buy
   const [isApproved, setIsApproved] = useState(false); // Using state to manage whether the user has approved the purchase
+  const copyTokenAddress = () => {
+    navigator.clipboard.writeText("0xdFEE3b8261C3fC2cB226D7D2857F968b54553E99");
+  };
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick = () => {
+    setClicked(!clicked);
+  };
+
+  function handleButtonClick() {
+    handleClick();
+    copyTokenAddress();
+  }
+
 
   const buy = async () => {
     try {
@@ -379,11 +393,11 @@ const BuyTokens: React.FC<IBuyTokens> = () => {
             1 Ouroboros = 1 USDT
           </p>
           <div className={"buy-token__body-input"}>
-            <div className={"deposit-popup__deposit-input"}>
+            <div className={"deposit-input"}>
               <input
                 style={{ width: "170px", height: "30px" }}
                 type={"number"}
-                placeholder={"Введите Сумму"}
+                placeholder={"enter the amount"}
                 value={amount}
                 onChange={(e) => handleChangeAmount(e)}
               />
@@ -396,7 +410,7 @@ const BuyTokens: React.FC<IBuyTokens> = () => {
               })}
               onClick={approve}
             >
-              <p>Одобрить</p>
+              <p>Approve</p>
             </div>
             <div
               className={`buy-button-v2 ${
@@ -404,8 +418,12 @@ const BuyTokens: React.FC<IBuyTokens> = () => {
               }`}
               onClick={buy}
             >
-              <p> Купить </p>
+              <p> Buy Token </p>
             </div>
+            <button  className={`buy-button-v3 ${clicked ? "buy-button-v3--clicked" : ""}`}
+                  onClick={handleButtonClick}>
+                    {clicked ? "address copied" : "copy token address"}
+                  </button>
           </div>
         </div>
       </div>
