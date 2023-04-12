@@ -13,6 +13,8 @@ const BuyTokens: React.FC<IBuyTokens> = () => {
   };
   const [clicked, setClicked] = useState(false);
 
+  const [buttonText, setButtonText] = useState("Approve");
+
   const handleClick = () => {
     setClicked(!clicked);
   };
@@ -22,6 +24,8 @@ const BuyTokens: React.FC<IBuyTokens> = () => {
     copyTokenAddress();
   }
 
+  const [txStatus, setTxStatus] = useState("");
+  
 
   const buy = async () => {
     try {
@@ -187,6 +191,7 @@ const BuyTokens: React.FC<IBuyTokens> = () => {
       const tx = await contract.buyTokens(ethers.utils.parseEther(amount));
       const response = await tx.wait();
       console.log("response: ", response);
+      setTxStatus("Transaction successful");
     } catch (error) {
       console.error(error);
     }
@@ -369,6 +374,7 @@ const BuyTokens: React.FC<IBuyTokens> = () => {
       const tx = await contract.approve("0xFF18765da35E1E2b0e99ddA0b7cAaCb8ed26D07D", ethers.utils.parseEther(amount));
       const response = await tx.wait();
       console.log("response: ", response);
+      setButtonText("Approved");
       setIsApproved(true);
     } catch (error) {
       console.error(error);
@@ -405,20 +411,22 @@ const BuyTokens: React.FC<IBuyTokens> = () => {
           </div>
           <div className={"container"}>
             <div
-              className={classNames({
-                "buy-button-v2": true,
-              })}
+              className={`buy-button-v2 ${
+                isApproved ? "buy-button-v2--succ" : "buy-button-v2"}`}
               onClick={approve}
             >
-              <p>Approve</p>
+              <p>{buttonText}</p>
             </div>
             <div
               className={`buy-button-v2 ${
-                isApproved ? "" : "buy-button-v2--inactive"
+                isApproved ? "buy-button-v2" : "buy-button-v2"
               }`}
               onClick={buy}
             >
-              <p> Buy Token </p>
+              <p> Buy Token </p> 
+            </div>
+            <div >
+            {txStatus && <div style={{fontSize:'12px', paddingBottom:'10px', marginTop:'-10px'}} className={"status"}>{txStatus}</div>}
             </div>
             <button  className={`buy-button-v3 ${clicked ? "buy-button-v3--clicked" : ""}`}
                   onClick={handleButtonClick}>

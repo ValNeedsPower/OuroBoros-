@@ -88,6 +88,10 @@
   text-transform: uppercase;
   cursor: pointer;
 
+  &--succ{
+    border: 2px solid aquamarine;
+  }
+
   &--inactive {
     background-color: gray;
     color: rgb(223, 223, 223);
