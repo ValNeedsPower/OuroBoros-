@@ -2,7 +2,7 @@ import './Landing.scss'
 import React, {useEffect, useRef, useState} from "react";
 import {useStore} from "effector-react";
 
-import {MetamaskWallet} from "../../../services/wallet/metamask-wallet";
+
 import Header from "./Header";
 import ProfilePopUp from "./ProfilePopUp";
 import BuyTokens from "./BuyTokens";
@@ -10,7 +10,6 @@ import StakingPools from "./StakingPools";
 import {ethers} from "ethers";
 import modalTypes from "../../../services/modals/modalTypes";
 import {modal$} from "../../../services/modals";
-import {PoolType} from "./StakingPools/StakingPools";
 import classNames from "classnames";
 
 
@@ -21,7 +20,6 @@ interface ILanding {
 const Landing: React.FC<ILanding> = () => {
     const modal = useStore(modal$)
     const isMobile = window.innerWidth < 1366
-    const [walletIsLoading, setWalletIsLoading] = useState(false)
     const [wallet, setWallet] = useState<any>(null)
     const [addr, setAddr] = useState<any>('')
     const [refCode, setRefCode] = useState('')
@@ -35,17 +33,9 @@ const Landing: React.FC<ILanding> = () => {
 
     const poolRef = useRef(null)
 
-    const initBcData = async () => {
-        const wallet = await new MetamaskWallet()
-        wallet && setWallet(wallet)
+  
 
 
-        setWalletIsLoading(true)
-    }
-
-    useEffect(() => {
-        initBcData()
-    }, [])
 
     const connectWallet = async () => {
         try {
@@ -100,60 +90,15 @@ const Landing: React.FC<ILanding> = () => {
         }
     }
 
-    const buyMc = async (amount: string) => {
-        try {
-            await wallet.buyToken(amount)
-        } catch (e) {
-            console.error(e)
-        }
-    }
-
-    const scrollToPools = () => {
-        if (poolRef && poolRef.current) {
-            // poolRef.current.scrollIntoView({behavior: "smooth", block: "nearest"});
-        }
-    }
-
-    const generateRefCode = async () => {
-        try {
-            const refCode = await wallet.generateRefCode(addr)
-            setRefCode(refCode)
-        } catch (e) {
-            console.error(e)
-        }
-    }
-
-    const stake = async (type: PoolType, amount: string, period: string) => {
-        try {
-            await wallet.stakeTokens(type, amount, period)
-        } catch (e) {
-            console.error(e)
-        }
-    }
-
-    const claimReward = async (type: PoolType, index: number) => {
-        try {
-            await wallet.claimRewards(type, index)
-        } catch (e) {
-            console.error(e)
-        }
-    }
-
+    
     return (
         <div className={classNames({
             'landing': true,
             // 'landing--loading': !walletIsLoading,
         })}>
-            <Header scrollToPools={scrollToPools} addr={addr} connectWallet={connectWallet}
-                    disconnectWallet={disconnectWallet}/>
+            <Header />
             <div className={'landing-body'}>
-                {modal.type === modalTypes.PROFILE_POPUP &&
-                    <ProfilePopUp referralRewards={refReward} balance={mcBalance} team={teamInfo}
-                                  generateRefCode={generateRefCode} refCode={refCode}/>
-                }
-                <BuyTokens balance={tokenBalance} wallet={wallet} buyMc={buyMc}/>
-               <div style={{display: 'none'}}>  <StakingPools refProp={poolRef} wallet={wallet} claimReward={claimReward} stakes={stakes} stake={stake}
-                              balance={mcBalance} poolsTvl={poolsInfo} {...modal.props}/> </div>
+                <BuyTokens/>
             </div>
             <div style={{paddingTop: '150px'}} className={'landing__support'}>
             </div>
