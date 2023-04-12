@@ -15,7 +15,6 @@ interface IBuyTokens {
 const BuyTokens: React.FC<IBuyTokens> = ({buyMc, wallet, balance}) => {
     const isMobile = window.innerWidth < 1366       // Storing whether the user is on a mobile device
     const [amount, setAmount] = useState('')        // Using state to manage the amount of tokens to buy
-    const [refId, setRefId] = useState('')          // Using state to manage the referral ID
     const [allowance, setAllowance] = useState('')  // Using state to manage the allowance for buying tokens
 
     const [isApproved, setIsApproved] = useState(false); // Using state to manage whether the user has approved the purchase

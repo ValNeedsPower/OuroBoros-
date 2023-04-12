@@ -52,7 +52,6 @@ export class MetamaskWallet extends TypedEmitter<WalletEvents> {
         'function balanceOf(address addr) public view returns (uint256)',
 
         'function stake(uint8 _pool, uint256 _amount, uint256 _lockPeriod) external',
-        'function getStakes(uint8 _pool, address addr) public view returns ((uint256, uint256, uint256, uint256, uint)[])',
 
         'function previewRewards(address _user, uint8 _pool, uint256 _poolId) external view returns (uint256)',
 

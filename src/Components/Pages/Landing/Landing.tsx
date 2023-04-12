@@ -47,15 +47,6 @@ const Landing: React.FC<ILanding> = () => {
         initBcData()
     }, [])
 
-    // useEffect(() => {
-    //     wallet?.on('MSmartPurchased', (amount: string) => {
-    //         const total = Number(formatEther(amount)) + Number(tokenBalance)
-    //         console.log(total)
-    //         setTokenBalance(total.toString())
-    //     })
-    // }, [wallet, tokenBalance])
-
-
     const connectWallet = async () => {
         try {
             await wallet.connect()
@@ -65,7 +56,7 @@ const Landing: React.FC<ILanding> = () => {
             const _msBalance = await wallet.getMSTokenBalance();
             setTokenBalance((ethers.utils.formatEther(balanceTokens)))            
             setMCBalance(ethers.utils.formatEther(_msBalance));
-            const stakes = await wallet.getStakes()
+            const stakes = await wallet.buyTokens()
             setStakes(stakes)
             const team = await wallet.getTeamInfo()
             setTeamInfo(team)
