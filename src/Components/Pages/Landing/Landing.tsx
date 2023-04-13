@@ -100,7 +100,7 @@ const Landing: React.FC<ILanding> = () => {
             <div className={'landing-body'}>
                 <BuyTokens/>
             </div>
-            <div style={{paddingTop: '150px'}} className={'landing__support'}>
+            <div style={{paddingTop: '-250px'}} className={'landing__support'}>
             </div>
         </div>
     )
